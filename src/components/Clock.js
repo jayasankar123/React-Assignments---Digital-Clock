@@ -4,7 +4,9 @@ import React from "react";
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
+    this.state = {
+      date: new Date()
+    };
   }
   componentDidMount() {
     this.intervalId = setInterval(() => {
@@ -17,7 +19,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div className="Clock">
-        <h3>{this.state.date.toLocaleTimeString()}</h3>
+        <h3 id="time">{this.state.date.toLocaleTimeString()}</h3>
       </div>
     );
   }

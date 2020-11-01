@@ -5,12 +5,18 @@ class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      hours: new Date().getHours(),
+      minutes: new Date().getMinutes(),
+      seconds: new Date().getSeconds()
     };
   }
   componentDidMount() {
     this.intervalId = setInterval(() => {
-      this.setState({ date: new Date() });
+      this.setState({
+        hours: new Date().getHours(),
+        minutes: new Date().getMinutes(),
+        seconds: new Date().getSeconds()
+      });
     }, 1000);
   }
   componentWillUnmount() {
@@ -19,7 +25,11 @@ class Clock extends React.Component {
   render() {
     return (
       <div className="Clock">
-        <h3 id="time">{this.state.date.toLocaleTimeString()}</h3>
+        <h3 id="time">
+          {`${this.state.hours % 12}:${this.state.minutes}:${
+            this.state.seconds
+          } ${this.state.hours > 12 ? "PM" : "AM"}`}
+        </h3>
       </div>
     );
   }

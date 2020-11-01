@@ -27,9 +27,11 @@ class Clock extends React.Component {
       <div className="Clock">
         <h3 id="time">
           {`${
-            this.state.hours % 12 < 10
-              ? "0" + (this.state.hours % 12)
-              : this.state.hours % 12
+            this.state.hours !== 12
+              ? this.state.hours % 12 < 10
+                ? "0" + (this.state.hours % 12)
+                : this.state.hours % 12
+              : 12
           }:${
             this.state.minutes < 10
               ? "0" + this.state.minutes
@@ -38,7 +40,7 @@ class Clock extends React.Component {
             this.state.seconds < 10
               ? "0" + this.state.seconds
               : this.state.seconds
-          } ${this.state.hours > 12 ? "PM" : "AM"}`}
+          } ${this.state.hours >= 12 ? "PM" : "AM"}`}
         </h3>
       </div>
     );
